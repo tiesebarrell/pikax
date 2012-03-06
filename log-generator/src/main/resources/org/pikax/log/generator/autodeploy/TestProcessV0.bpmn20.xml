@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="loggenerator0" name="loggenerator0">
+    <startEvent id="startevent1" name="Start"></startEvent>
+    <sequenceFlow id="flow1" name="" sourceRef="startevent1" targetRef="servicetask1"></sequenceFlow>
+    <serviceTask id="servicetask1" name="Activity 1" activiti:delegateExpression="${activity1Delegate}"></serviceTask>
+    <sequenceFlow id="flow2" name="" sourceRef="servicetask1" targetRef="servicetask2"></sequenceFlow>
+    <serviceTask id="servicetask2" name="Activity 2" activiti:delegateExpression="${activity2Delegate}"></serviceTask>
+    <sequenceFlow id="flow3" name="" sourceRef="servicetask2" targetRef="servicetask3"></sequenceFlow>
+    <serviceTask id="servicetask3" name="Activity 3" activiti:delegateExpression="${activity3Delegate}"></serviceTask>
+    <sequenceFlow id="flow100" name="" sourceRef="servicetask3" targetRef="endevent1"></sequenceFlow>
+    <endEvent id="endevent1" name="End"></endEvent>
+  </process>
+</definitions>
