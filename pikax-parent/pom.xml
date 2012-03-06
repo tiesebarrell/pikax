@@ -11,7 +11,8 @@
 		<activiti.version>5.8</activiti.version>
 		<aspectj.version>1.6.11</aspectj.version>
 		<camel.version>2.9.0</camel.version>
-		<commons.lang.version>2.6</commons.lang.version>
+		<commons.io.version>2.1</commons.io.version>
+		<commons.lang.version>3.1</commons.lang.version>
 		<h2database.version>1.2.132</h2database.version>
 		<junit.version>4.8.1</junit.version>
 		<spring.version>3.1.0.RELEASE</spring.version>
@@ -19,18 +20,21 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-	<dependencies>
-
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>${commons.lang.version}</version>
-		</dependency>
-
-	</dependencies>
-
 	<dependencyManagement>
 		<dependencies>
+		
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons.lang.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons.io.version}</version>
+			</dependency>
+		
 			<!-- Activiti -->
 			<dependency>
 				<groupId>org.activiti</groupId>
