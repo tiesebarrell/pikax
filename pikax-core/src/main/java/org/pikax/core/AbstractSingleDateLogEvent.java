@@ -18,6 +18,7 @@
  */
 package org.pikax.core;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.UUID;
@@ -26,22 +27,26 @@ import java.util.UUID;
  * @author Tiese Barrell
  * 
  */
-public class LogEvent {
+public abstract class AbstractSingleDateLogEvent implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -110237966471865683L;
+
+	private static final String CORRELATION_ID_PATTERN = "%s.%s";
 
 	private final String id;
 
 	private final String caseId;
-	private final Calendar start;
-	private Calendar end;
+	private final Calendar momentInTime;
 	private final String auditActivity;
 
-	protected LogEvent(final String caseId, final String auditActivity, final AbstractSingleDateLogEvent start,
-			final AbstractSingleDateLogEvent end) {
+	protected AbstractSingleDateLogEvent(final String caseId, final String auditActivity, final Calendar momentInTime) {
 		super();
 		this.id = UUID.randomUUID().toString();
 		this.caseId = caseId;
-		this.start = start.getMomentInTime();
-		this.end = end.getMomentInTime();
+		this.momentInTime = momentInTime;
 		this.auditActivity = auditActivity;
 	}
 
@@ -62,19 +67,19 @@ public class LogEvent {
 	/**
 	 * @return the start
 	 */
-	public String getStart() {
-		return new SimpleDateFormat(Constants.TIMESTAMP_DATE_PATTERN).format(start.getTime());
+	public String getMomentInTimeAsString() {
+		return new SimpleDateFormat(Constants.TIMESTAMP_DATE_PATTERN).format(momentInTime.getTime());
 	}
 
 	/**
-	 * @return the end
+	 * @return the momentInTime
 	 */
-	public String getEnd() {
-		return new SimpleDateFormat(Constants.TIMESTAMP_DATE_PATTERN).format(end.getTime());
+	public Calendar getMomentInTime() {
+		return momentInTime;
 	}
 
-	protected void setEnd(Calendar end) {
-		this.end = end;
+	public String getCorrelationId() {
+		return String.format(CORRELATION_ID_PATTERN, caseId, auditActivity);
 	}
 
 	/**
@@ -84,10 +89,10 @@ public class LogEvent {
 		return auditActivity;
 	}
 
-	public int compareTo(final LogEvent o) {
+	public int compareTo(final AbstractSingleDateLogEvent o) {
 		int result = 0;
 		if (o != null) {
-			result = start.compareTo(o.start);
+			result = momentInTime.compareTo(o.momentInTime);
 		}
 		return result;
 	}
@@ -101,7 +106,7 @@ public class LogEvent {
 	public String toString() {
 		final StringBuilder builder = new StringBuilder();
 		builder.append("Case: ").append(caseId).append("\n").append("Activity name: ").append(auditActivity)
-				.append("\n").append("Start: ").append(start).append("\n").append("End: ").append(end);
+				.append("\n").append("Moment in time: ").append(momentInTime);
 
 		return builder.toString();
 	}

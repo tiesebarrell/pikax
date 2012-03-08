@@ -1,28 +1,19 @@
 package org.pikax.log.generator.process.v1;
 
-import java.util.Calendar;
-
 import org.activiti.engine.delegate.DelegateExecution;
-import org.pikax.log.generator.AbstractAuditableDelegate;
+import org.pikax.log.generator.AbstractSleepableServiceTaskDelegate;
 import org.springframework.stereotype.Component;
 
-
 @Component("sendPaymentDelegate")
-public class SendPaymentDelegate extends AbstractAuditableDelegate {
+public class SendPaymentDelegate extends AbstractSleepableServiceTaskDelegate {
 
-    @Override
-    protected String getAuditActivityName() {
-        return "Send payment";
-    }
+	@Override
+	public void doExecute(final DelegateExecution execution) throws Exception {
+	}
 
-    @Override
-    protected Calendar getStart(final DelegateExecution execution) {
-        return getStartNow(execution);
-    }
-
-    @Override
-    protected Calendar getEnd(final DelegateExecution execution) {
-        return getEndForRandomDuration(execution, 60000, 180000);
-    }
+	@Override
+	protected int getMaximumDelay() {
+		return 2000;
+	}
 
 }

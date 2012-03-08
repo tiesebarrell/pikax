@@ -2,10 +2,8 @@ package org.pikax.log.generator.process.v1;
 
 import org.activiti.engine.delegate.DelegateExecution;
 import org.pikax.log.generator.AbstractSleepableServiceTaskDelegate;
-import org.springframework.stereotype.Component;
 
-@Component("sendAcceptanceLetterDelegate")
-public class SendAcceptanceLetterDelegate extends AbstractSleepableServiceTaskDelegate {
+public class CloseClaimDelegate extends AbstractSleepableServiceTaskDelegate {
 
 	@Override
 	public void doExecute(final DelegateExecution execution) throws Exception {
@@ -13,7 +11,7 @@ public class SendAcceptanceLetterDelegate extends AbstractSleepableServiceTaskDe
 
 	@Override
 	protected int getMaximumDelay() {
-		return 5000;
+		return 1000;
 	}
 
 }

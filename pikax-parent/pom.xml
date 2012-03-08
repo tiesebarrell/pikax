@@ -10,7 +10,7 @@
 	<properties>
 		<activiti.version>5.8</activiti.version>
 		<aspectj.version>1.6.11</aspectj.version>
-		<camel.version>2.9.0</camel.version>
+		<camel.version>2.9.1</camel.version>
 		<commons.io.version>2.1</commons.io.version>
 		<commons.lang.version>3.1</commons.lang.version>
 		<h2database.version>1.2.132</h2database.version>

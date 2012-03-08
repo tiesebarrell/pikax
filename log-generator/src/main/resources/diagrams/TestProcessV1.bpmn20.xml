@@ -1,20 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
-  <process id="discologgenerator1" name="discologgenerator1">
-    <documentation>Place documentation for the 'TestDiscoV1' process here.</documentation>
+  <process id="loggenerator1" name="loggenerator1">
     <startEvent id="startevent1" name="Start"></startEvent>
     <endEvent id="endevent1" name="End"></endEvent>
     <serviceTask id="servicetask1" name="Process claim" activiti:delegateExpression="${processClaimDelegate}">
       <extensionElements>
-        <activiti:executionListener event="start" delegateExpression="#{serviceTaskStartListener}"></activiti:executionListener>
+        <activiti:executionListener event="start" class="org.pikax.activiti.listener.ServiceTaskStartListener"></activiti:executionListener>
+        <activiti:executionListener event="end" class="org.pikax.activiti.listener.ServiceTaskEndListener"></activiti:executionListener>
       </extensionElements>
     </serviceTask>
     <sequenceFlow id="flow1" name="" sourceRef="startevent1" targetRef="servicetask1"></sequenceFlow>
     <exclusiveGateway id="exclusivegateway1" name="Insurance valid?"></exclusiveGateway>
     <sequenceFlow id="flow2" name="" sourceRef="servicetask1" targetRef="exclusivegateway1"></sequenceFlow>
-    <serviceTask id="servicetask2" name="Send rejection letter" activiti:delegateExpression="${sendRejectionLetterDelegate}"></serviceTask>
-    <serviceTask id="servicetask3" name="Determine payment" activiti:delegateExpression="${determinePaymentDelegate}"></serviceTask>
-    <serviceTask id="servicetask4" name="Check payment" activiti:delegateExpression="${checkPaymentDelegate}"></serviceTask>
+    <serviceTask id="servicetask2" name="[End] Send rejection letter" activiti:delegateExpression="${sendRejectionLetterDelegate}">
+      <extensionElements>
+        <activiti:executionListener event="start" class="org.pikax.activiti.listener.ServiceTaskStartListener"></activiti:executionListener>
+        <activiti:executionListener event="end" class="org.pikax.activiti.listener.ServiceTaskEndListener"></activiti:executionListener>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="servicetask3" name="Determine payment" activiti:delegateExpression="${determinePaymentDelegate}">
+      <extensionElements>
+        <activiti:executionListener event="start" class="org.pikax.activiti.listener.ServiceTaskStartListener"></activiti:executionListener>
+        <activiti:executionListener event="end" class="org.pikax.activiti.listener.ServiceTaskEndListener"></activiti:executionListener>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="servicetask4" name="Check payment" activiti:delegateExpression="${checkPaymentDelegate}">
+      <extensionElements>
+        <activiti:executionListener event="start" class="org.pikax.activiti.listener.ServiceTaskStartListener"></activiti:executionListener>
+        <activiti:executionListener event="end" class="org.pikax.activiti.listener.ServiceTaskEndListener"></activiti:executionListener>
+      </extensionElements>
+    </serviceTask>
     <sequenceFlow id="flow3" name="" sourceRef="servicetask3" targetRef="servicetask4"></sequenceFlow>
     <sequenceFlow id="flow4" name="yes" sourceRef="exclusivegateway1" targetRef="servicetask3">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[#{claim=="ok"}]]></conditionExpression>
@@ -29,8 +44,18 @@
     </sequenceFlow>
     <parallelGateway id="parallelgateway1" name="Parallel Gateway"></parallelGateway>
     <parallelGateway id="parallelgateway2" name="Parallel Gateway"></parallelGateway>
-    <serviceTask id="servicetask5" name="Send payment" activiti:delegateExpression="${sendPaymentDelegate}"></serviceTask>
-    <serviceTask id="servicetask6" name="Send acceptance letter" activiti:delegateExpression="${sendAcceptanceLetterDelegate}"></serviceTask>
+    <serviceTask id="servicetask5" name="Send payment" activiti:delegateExpression="${sendPaymentDelegate}">
+      <extensionElements>
+        <activiti:executionListener event="start" class="org.pikax.activiti.listener.ServiceTaskStartListener"></activiti:executionListener>
+        <activiti:executionListener event="end" class="org.pikax.activiti.listener.ServiceTaskEndListener"></activiti:executionListener>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="servicetask6" name="Send acceptance letter" activiti:delegateExpression="${sendAcceptanceLetterDelegate}">
+      <extensionElements>
+        <activiti:executionListener event="start" class="org.pikax.activiti.listener.ServiceTaskStartListener"></activiti:executionListener>
+        <activiti:executionListener event="end" class="org.pikax.activiti.listener.ServiceTaskEndListener"></activiti:executionListener>
+      </extensionElements>
+    </serviceTask>
     <sequenceFlow id="flow11" name="" sourceRef="parallelgateway1" targetRef="servicetask5"></sequenceFlow>
     <sequenceFlow id="flow12" name="" sourceRef="parallelgateway1" targetRef="servicetask6"></sequenceFlow>
     <sequenceFlow id="flow13" name="" sourceRef="servicetask6" targetRef="parallelgateway2"></sequenceFlow>
@@ -39,17 +64,29 @@
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[#{payment=="ok"}]]></conditionExpression>
     </sequenceFlow>
     <sequenceFlow id="flow16" name="" sourceRef="servicetask2" targetRef="endevent1"></sequenceFlow>
-    <serviceTask id="servicetask7" name="Send payment notice" activiti:delegateExpression="${sendPaymentNoticeDelegate}"></serviceTask>
+    <serviceTask id="servicetask7" name="[End] Send payment notice" activiti:delegateExpression="${sendPaymentNoticeDelegate}">
+      <extensionElements>
+        <activiti:executionListener event="start" class="org.pikax.activiti.listener.ServiceTaskStartListener"></activiti:executionListener>
+        <activiti:executionListener event="end" class="org.pikax.activiti.listener.ServiceTaskEndListener"></activiti:executionListener>
+      </extensionElements>
+    </serviceTask>
     <sequenceFlow id="flow17" name="behind on payments" sourceRef="exclusivegateway1" targetRef="servicetask7">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[#{claim=="behind"}]]></conditionExpression>
     </sequenceFlow>
-    <endEvent id="endevent2" name="End"></endEvent>
-    <sequenceFlow id="flow18" name="" sourceRef="parallelgateway2" targetRef="endevent2"></sequenceFlow>
     <endEvent id="endevent3" name="End"></endEvent>
     <sequenceFlow id="flow19" name="" sourceRef="servicetask7" targetRef="endevent3"></sequenceFlow>
+    <serviceTask id="servicetask8" name="[End] Close claim" activiti:class="org.pikax.log.generator.process.v1.CloseClaimDelegate">
+      <extensionElements>
+        <activiti:executionListener event="start" class="org.pikax.activiti.listener.ServiceTaskStartListener"></activiti:executionListener>
+        <activiti:executionListener event="end" class="org.pikax.activiti.listener.ServiceTaskEndListener"></activiti:executionListener>
+      </extensionElements>
+    </serviceTask>
+    <endEvent id="endevent4" name="End"></endEvent>
+    <sequenceFlow id="flow20" name="" sourceRef="servicetask8" targetRef="endevent4"></sequenceFlow>
+    <sequenceFlow id="flow21" name="" sourceRef="parallelgateway2" targetRef="servicetask8"></sequenceFlow>
   </process>
-  <bpmndi:BPMNDiagram id="BPMNDiagram_discologgenerator1">
-    <bpmndi:BPMNPlane bpmnElement="discologgenerator1" id="BPMNPlane_discologgenerator1">
+  <bpmndi:BPMNDiagram id="BPMNDiagram_loggenerator1">
+    <bpmndi:BPMNPlane bpmnElement="loggenerator1" id="BPMNPlane_loggenerator1">
       <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
         <omgdc:Bounds height="35" width="35" x="50" y="250"></omgdc:Bounds>
       </bpmndi:BPMNShape>
@@ -89,11 +126,14 @@
       <bpmndi:BPMNShape bpmnElement="servicetask7" id="BPMNShape_servicetask7">
         <omgdc:Bounds height="55" width="105" x="440" y="239"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="endevent2" id="BPMNShape_endevent2">
-        <omgdc:Bounds height="35" width="35" x="1180" y="250"></omgdc:Bounds>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="endevent3" id="BPMNShape_endevent3">
         <omgdc:Bounds height="35" width="35" x="570" y="249"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="servicetask8" id="BPMNShape_servicetask8">
+        <omgdc:Bounds height="55" width="105" x="1160" y="240"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent4" id="BPMNShape_endevent4">
+        <omgdc:Bounds height="35" width="35" x="1290" y="249"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
         <omgdi:waypoint x="85" y="267"></omgdi:waypoint>
@@ -160,13 +200,17 @@
         <omgdi:waypoint x="310" y="267"></omgdi:waypoint>
         <omgdi:waypoint x="440" y="266"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow18" id="BPMNEdge_flow18">
-        <omgdi:waypoint x="1130" y="267"></omgdi:waypoint>
-        <omgdi:waypoint x="1180" y="267"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow19" id="BPMNEdge_flow19">
         <omgdi:waypoint x="545" y="266"></omgdi:waypoint>
         <omgdi:waypoint x="570" y="266"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow20" id="BPMNEdge_flow20">
+        <omgdi:waypoint x="1265" y="267"></omgdi:waypoint>
+        <omgdi:waypoint x="1290" y="266"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow21" id="BPMNEdge_flow21">
+        <omgdi:waypoint x="1130" y="267"></omgdi:waypoint>
+        <omgdi:waypoint x="1160" y="267"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

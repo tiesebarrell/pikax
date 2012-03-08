@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:al="http://eclipse.org/graphiti/mm/algorithms" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL-XMI" xmlns:pi="http://eclipse.org/graphiti/mm/pictograms">
-  <pi:Diagram visible="true" gridUnit="10" diagramTypeId="BPMNdiagram" name="TestDiscoV1.activiti" snapToGrid="true" showGuides="true" pictogramLinks="/0/@children.0/@link /0/@children.1/@link /0/@children.2/@link /0/@children.2/@children.0/@link /0/@connections.0/@link /0/@children.3/@link /0/@connections.1/@link /0/@children.4/@link /0/@children.4/@children.0/@link /0/@children.5/@link /0/@children.5/@children.0/@link /0/@children.6/@link /0/@children.6/@children.0/@link /0/@connections.2/@link /0/@connections.3/@link /0/@connections.4/@link /0/@children.7/@link /0/@connections.5/@link /0/@connections.6/@link /0/@children.8/@link /0/@children.9/@link /0/@children.10/@link /0/@children.10/@children.0/@link /0/@children.11/@link /0/@children.11/@children.0/@link /0/@connections.7/@link /0/@connections.8/@link /0/@connections.9/@link /0/@connections.10/@link /0/@connections.11/@link /0/@connections.12/@link /0/@children.12/@link /0/@children.12/@children.0/@link /0/@connections.13/@link /0/@children.13/@link /0/@connections.14/@link /0/@children.14/@link /0/@connections.15/@link">
+  <pi:Diagram visible="true" gridUnit="10" diagramTypeId="BPMNdiagram" name="TestProcessV1.activiti" snapToGrid="true" showGuides="true" pictogramLinks="/0/@children.0/@link /0/@children.1/@link /0/@children.2/@link /0/@children.2/@children.0/@link /0/@connections.0/@link /0/@children.3/@link /0/@connections.1/@link /0/@children.4/@link /0/@children.4/@children.0/@link /0/@children.5/@link /0/@children.5/@children.0/@link /0/@children.6/@link /0/@children.6/@children.0/@link /0/@connections.2/@link /0/@connections.3/@link /0/@connections.4/@link /0/@children.7/@link /0/@connections.5/@link /0/@connections.6/@link /0/@children.8/@link /0/@children.9/@link /0/@children.10/@link /0/@children.10/@children.0/@link /0/@children.11/@link /0/@children.11/@children.0/@link /0/@connections.7/@link /0/@connections.8/@link /0/@connections.9/@link /0/@connections.10/@link /0/@connections.11/@link /0/@connections.12/@link /0/@children.12/@link /0/@children.12/@children.0/@link /0/@connections.13/@link /0/@children.13/@link /0/@connections.14/@link /0/@children.14/@link /0/@children.14/@children.0/@link /0/@children.15/@link /0/@connections.15/@link /0/@connections.16/@link">
     <graphicsAlgorithm xsi:type="al:Rectangle" background="/0/@colors.1" foreground="/0/@colors.0" lineWidth="1" transparency="0.0" width="1000" height="1000"/>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <graphicsAlgorithm xsi:type="al:Ellipse" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="35" height="35" x="50" y="250">
@@ -83,7 +83,7 @@
         <graphicsAlgorithm xsi:type="al:Ellipse" filled="false" lineVisible="false"/>
       </anchors>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" lineWidth="1" transparency="0.0" width="105" height="30" y="20" style="/0/@styles.1" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Send rejection letter"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" lineWidth="1" transparency="0.0" width="105" height="30" y="20" style="/0/@styles.1" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="[End] Send rejection letter"/>
         <link businessObjects="servicetask2"/>
       </children>
       <children visible="true">
@@ -214,7 +214,7 @@
         <points y="20"/>
       </graphicsAlgorithm>
       <link businessObjects="parallelgateway2"/>
-      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.14" incomingConnections="/0/@connections.9 /0/@connections.10"/>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.16" incomingConnections="/0/@connections.9 /0/@connections.10"/>
       <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="/0/@children.9/@graphicsAlgorithm/@graphicsAlgorithmChildren.0" relativeWidth="0.51" relativeHeight="0.1">
         <graphicsAlgorithm xsi:type="al:Ellipse" filled="false" lineVisible="false"/>
       </anchors>
@@ -274,12 +274,12 @@
         <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="105" height="55" style="/0/@styles.1" cornerHeight="20" cornerWidth="20"/>
       </graphicsAlgorithm>
       <link businessObjects="servicetask7"/>
-      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.15" incomingConnections="/0/@connections.13"/>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.14" incomingConnections="/0/@connections.13"/>
       <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="/0/@children.12/@graphicsAlgorithm/@graphicsAlgorithmChildren.0" relativeWidth="1.0" relativeHeight="0.51">
         <graphicsAlgorithm xsi:type="al:Ellipse" filled="false" lineVisible="false"/>
       </anchors>
       <children visible="true">
-        <graphicsAlgorithm xsi:type="al:MultiText" lineWidth="1" transparency="0.0" width="105" height="30" y="20" style="/0/@styles.1" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="Send payment notice"/>
+        <graphicsAlgorithm xsi:type="al:MultiText" lineWidth="1" transparency="0.0" width="105" height="30" y="20" style="/0/@styles.1" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="[End] Send payment notice"/>
         <link businessObjects="servicetask7"/>
       </children>
       <children visible="true">
@@ -287,17 +287,34 @@
       </children>
     </children>
     <children xsi:type="pi:ContainerShape" visible="true" active="true">
-      <graphicsAlgorithm xsi:type="al:Ellipse" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="35" height="35" x="1180" y="250">
-        <graphicsAlgorithmChildren xsi:type="al:Ellipse" lineWidth="3" transparency="0.0" width="35" height="35" style="/0/@styles.0"/>
-      </graphicsAlgorithm>
-      <link businessObjects="endevent2"/>
-      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.14"/>
-    </children>
-    <children xsi:type="pi:ContainerShape" visible="true" active="true">
       <graphicsAlgorithm xsi:type="al:Ellipse" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="35" height="35" x="570" y="249">
         <graphicsAlgorithmChildren xsi:type="al:Ellipse" lineWidth="3" transparency="0.0" width="35" height="35" style="/0/@styles.0"/>
       </graphicsAlgorithm>
       <link businessObjects="endevent3"/>
+      <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.14"/>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="105" height="55" x="1160" y="240">
+        <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="1" transparency="0.0" width="105" height="55" style="/0/@styles.1" cornerHeight="20" cornerWidth="20"/>
+      </graphicsAlgorithm>
+      <link businessObjects="servicetask8"/>
+      <anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.15" incomingConnections="/0/@connections.16"/>
+      <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="/0/@children.14/@graphicsAlgorithm/@graphicsAlgorithmChildren.0" relativeWidth="1.0" relativeHeight="0.51">
+        <graphicsAlgorithm xsi:type="al:Ellipse" filled="false" lineVisible="false"/>
+      </anchors>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:MultiText" lineWidth="1" transparency="0.0" width="105" height="30" y="20" style="/0/@styles.1" font="/0/@fonts.0" horizontalAlignment="ALIGNMENT_CENTER" value="[End] Close claim"/>
+        <link businessObjects="servicetask8"/>
+      </children>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Image" lineWidth="1" transparency="0.0" width="16" height="16" x="5" y="5" id="org.activiti.designer.servicetask" stretchH="false" stretchV="false" proportional="false"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true" active="true">
+      <graphicsAlgorithm xsi:type="al:Ellipse" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="35" height="35" x="1290" y="249">
+        <graphicsAlgorithmChildren xsi:type="al:Ellipse" lineWidth="3" transparency="0.0" width="35" height="35" style="/0/@styles.0"/>
+      </graphicsAlgorithm>
+      <link businessObjects="endevent4"/>
       <anchors xsi:type="pi:ChopboxAnchor" incomingConnections="/0/@connections.15"/>
     </children>
     <styles foreground="/0/@colors.2" lineWidth="20" id="EVENT">
@@ -592,9 +609,9 @@
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
-    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.9/@anchors.0" end="/0/@children.13/@anchors.0">
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.12/@anchors.0" end="/0/@children.13/@anchors.0">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
-      <link businessObjects="flow18"/>
+      <link businessObjects="flow19"/>
       <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
         <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" transparency="0.0" x="10" style="/0/@styles.1" font="/0/@fonts.0" value=""/>
       </connectionDecorators>
@@ -607,9 +624,24 @@
         </graphicsAlgorithm>
       </connectionDecorators>
     </connections>
-    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.12/@anchors.0" end="/0/@children.14/@anchors.0">
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.14/@anchors.0" end="/0/@children.15/@anchors.0">
       <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
-      <link businessObjects="flow19"/>
+      <link businessObjects="flow20"/>
+      <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
+        <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" transparency="0.0" x="10" style="/0/@styles.1" font="/0/@fonts.0" value=""/>
+      </connectionDecorators>
+      <connectionDecorators visible="true" locationRelative="true" location="1.0">
+        <graphicsAlgorithm xsi:type="al:Polygon" lineWidth="1" transparency="0.0" style="/0/@styles.2">
+          <points x="-10" y="-5" before="3" after="3"/>
+          <points/>
+          <points x="-10" y="5" before="3" after="3"/>
+          <points x="-8" before="3" after="3"/>
+        </graphicsAlgorithm>
+      </connectionDecorators>
+    </connections>
+    <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="/0/@children.9/@anchors.0" end="/0/@children.14/@anchors.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" foreground="/0/@colors.2" lineWidth="1" filled="false" transparency="0.0"/>
+      <link businessObjects="flow21"/>
       <connectionDecorators visible="true" active="true" locationRelative="true" location="0.5">
         <graphicsAlgorithm xsi:type="al:Text" lineWidth="1" transparency="0.0" x="10" style="/0/@styles.1" font="/0/@fonts.0" value=""/>
       </connectionDecorators>
@@ -627,20 +659,30 @@
     <colors/>
     <fonts name="Arial" size="8"/>
   </pi:Diagram>
-  <bpmn2:Process id="discologgenerator1" name="discologgenerator1" namespace="http://www.activiti.org/test">
-    <documentation id="documentation_process" text="Place documentation for the 'TestDiscoV1' process here."/>
+  <bpmn2:Process id="loggenerator1" name="loggenerator1" namespace="http://www.activiti.org/test">
+    <documentation id="documentation_process" text=""/>
   </bpmn2:Process>
   <bpmn2:StartEvent id="startevent1" name="Start" outgoing="flow1"/>
   <bpmn2:EndEvent id="endevent1" name="End" incoming="flow16"/>
   <bpmn2:ServiceTask id="servicetask1" name="Process claim" incoming="flow1" outgoing="flow2" implementation="${processClaimDelegate}" implementationType="delegateExpressionType" resultVariableName="">
-    <activitiListeners implementationType="delegateExpressionType" implementation="#{serviceTaskStartListener}" event="start"/>
+    <activitiListeners implementationType="classType" implementation="org.pikax.activiti.listener.ServiceTaskStartListener" event="start"/>
+    <activitiListeners implementationType="classType" implementation="org.pikax.activiti.listener.ServiceTaskEndListener" event="end"/>
   </bpmn2:ServiceTask>
   <bpmn2:SequenceFlow id="flow1" name="" sourceRef="startevent1" targetRef="servicetask1"/>
   <bpmn2:ExclusiveGateway id="exclusivegateway1" name="Insurance valid?" incoming="flow2" outgoing="flow4 flow5 flow17"/>
   <bpmn2:SequenceFlow id="flow2" name="" sourceRef="servicetask1" targetRef="exclusivegateway1"/>
-  <bpmn2:ServiceTask id="servicetask2" name="Send rejection letter" incoming="flow5" outgoing="flow16" implementation="${sendRejectionLetterDelegate}" implementationType="delegateExpressionType" resultVariableName=""/>
-  <bpmn2:ServiceTask id="servicetask3" name="Determine payment" incoming="flow4 flow8" outgoing="flow3" implementation="${determinePaymentDelegate}" implementationType="delegateExpressionType" resultVariableName=""/>
-  <bpmn2:ServiceTask id="servicetask4" name="Check payment" incoming="flow3" outgoing="flow7" implementation="${checkPaymentDelegate}" implementationType="delegateExpressionType" resultVariableName=""/>
+  <bpmn2:ServiceTask id="servicetask2" name="[End] Send rejection letter" incoming="flow5" outgoing="flow16" implementation="${sendRejectionLetterDelegate}" implementationType="delegateExpressionType" resultVariableName="">
+    <activitiListeners implementationType="classType" implementation="org.pikax.activiti.listener.ServiceTaskStartListener" event="start"/>
+    <activitiListeners implementationType="classType" implementation="org.pikax.activiti.listener.ServiceTaskEndListener" event="end"/>
+  </bpmn2:ServiceTask>
+  <bpmn2:ServiceTask id="servicetask3" name="Determine payment" incoming="flow4 flow8" outgoing="flow3" implementation="${determinePaymentDelegate}" implementationType="delegateExpressionType" resultVariableName="">
+    <activitiListeners implementationType="classType" implementation="org.pikax.activiti.listener.ServiceTaskStartListener" event="start"/>
+    <activitiListeners implementationType="classType" implementation="org.pikax.activiti.listener.ServiceTaskEndListener" event="end"/>
+  </bpmn2:ServiceTask>
+  <bpmn2:ServiceTask id="servicetask4" name="Check payment" incoming="flow3" outgoing="flow7" implementation="${checkPaymentDelegate}" implementationType="delegateExpressionType" resultVariableName="">
+    <activitiListeners implementationType="classType" implementation="org.pikax.activiti.listener.ServiceTaskStartListener" event="start"/>
+    <activitiListeners implementationType="classType" implementation="org.pikax.activiti.listener.ServiceTaskEndListener" event="end"/>
+  </bpmn2:ServiceTask>
   <bpmn2:SequenceFlow id="flow3" name="" sourceRef="servicetask3" targetRef="servicetask4"/>
   <bpmn2:SequenceFlow id="flow4" name="yes" sourceRef="exclusivegateway1" targetRef="servicetask3">
     <conditionExpression id="flow4_condition" body="#{claim==&quot;ok&quot;}"/>
@@ -654,9 +696,15 @@
     <conditionExpression id="flow8_condition" body="#{payment==&quot;notok&quot;}"/>
   </bpmn2:SequenceFlow>
   <bpmn2:ParallelGateway id="parallelgateway1" name="Parallel Gateway" incoming="flow15" outgoing="flow11 flow12"/>
-  <bpmn2:ParallelGateway id="parallelgateway2" name="Parallel Gateway" incoming="flow13 flow14" outgoing="flow18"/>
-  <bpmn2:ServiceTask id="servicetask5" name="Send payment" incoming="flow11" outgoing="flow14" implementation="${sendPaymentDelegate}" implementationType="delegateExpressionType" resultVariableName=""/>
-  <bpmn2:ServiceTask id="servicetask6" name="Send acceptance letter" incoming="flow12" outgoing="flow13" implementation="${sendAcceptanceLetterDelegate}" implementationType="delegateExpressionType" resultVariableName=""/>
+  <bpmn2:ParallelGateway id="parallelgateway2" name="Parallel Gateway" incoming="flow13 flow14" outgoing="flow21"/>
+  <bpmn2:ServiceTask id="servicetask5" name="Send payment" incoming="flow11" outgoing="flow14" implementation="${sendPaymentDelegate}" implementationType="delegateExpressionType" resultVariableName="">
+    <activitiListeners implementationType="classType" implementation="org.pikax.activiti.listener.ServiceTaskStartListener" event="start"/>
+    <activitiListeners implementationType="classType" implementation="org.pikax.activiti.listener.ServiceTaskEndListener" event="end"/>
+  </bpmn2:ServiceTask>
+  <bpmn2:ServiceTask id="servicetask6" name="Send acceptance letter" incoming="flow12" outgoing="flow13" implementation="${sendAcceptanceLetterDelegate}" implementationType="delegateExpressionType" resultVariableName="">
+    <activitiListeners implementationType="classType" implementation="org.pikax.activiti.listener.ServiceTaskStartListener" event="start"/>
+    <activitiListeners implementationType="classType" implementation="org.pikax.activiti.listener.ServiceTaskEndListener" event="end"/>
+  </bpmn2:ServiceTask>
   <bpmn2:SequenceFlow id="flow11" name="" sourceRef="parallelgateway1" targetRef="servicetask5"/>
   <bpmn2:SequenceFlow id="flow12" name="" sourceRef="parallelgateway1" targetRef="servicetask6"/>
   <bpmn2:SequenceFlow id="flow13" name="" sourceRef="servicetask6" targetRef="parallelgateway2"/>
@@ -665,12 +713,20 @@
     <conditionExpression id="flow15_condition" body="#{payment==&quot;ok&quot;}"/>
   </bpmn2:SequenceFlow>
   <bpmn2:SequenceFlow id="flow16" name="" sourceRef="servicetask2" targetRef="endevent1"/>
-  <bpmn2:ServiceTask id="servicetask7" name="Send payment notice" incoming="flow17" outgoing="flow19" implementation="${sendPaymentNoticeDelegate}" implementationType="delegateExpressionType" resultVariableName=""/>
+  <bpmn2:ServiceTask id="servicetask7" name="[End] Send payment notice" incoming="flow17" outgoing="flow19" implementation="${sendPaymentNoticeDelegate}" implementationType="delegateExpressionType" resultVariableName="">
+    <activitiListeners implementationType="classType" implementation="org.pikax.activiti.listener.ServiceTaskStartListener" event="start"/>
+    <activitiListeners implementationType="classType" implementation="org.pikax.activiti.listener.ServiceTaskEndListener" event="end"/>
+  </bpmn2:ServiceTask>
   <bpmn2:SequenceFlow id="flow17" name="behind on payments" sourceRef="exclusivegateway1" targetRef="servicetask7">
     <conditionExpression id="flow17_condition" body="#{claim==&quot;behind&quot;}"/>
   </bpmn2:SequenceFlow>
-  <bpmn2:EndEvent id="endevent2" name="End" incoming="flow18"/>
-  <bpmn2:SequenceFlow id="flow18" name="" sourceRef="parallelgateway2" targetRef="endevent2"/>
   <bpmn2:EndEvent id="endevent3" name="End" incoming="flow19"/>
   <bpmn2:SequenceFlow id="flow19" name="" sourceRef="servicetask7" targetRef="endevent3"/>
+  <bpmn2:ServiceTask id="servicetask8" name="[End] Close claim" incoming="flow21" outgoing="flow20" implementation="org.pikax.log.generator.process.v1.CloseClaimDelegate">
+    <activitiListeners implementationType="classType" implementation="org.pikax.activiti.listener.ServiceTaskStartListener" event="start"/>
+    <activitiListeners implementationType="classType" implementation="org.pikax.activiti.listener.ServiceTaskEndListener" event="end"/>
+  </bpmn2:ServiceTask>
+  <bpmn2:EndEvent id="endevent4" name="End" incoming="flow20"/>
+  <bpmn2:SequenceFlow id="flow20" name="" sourceRef="servicetask8" targetRef="endevent4"/>
+  <bpmn2:SequenceFlow id="flow21" name="" sourceRef="parallelgateway2" targetRef="servicetask8"/>
 </xmi:XMI>
