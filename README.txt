@@ -1,0 +1,1 @@
+Pikax is a simple Java library that helps you generate event logs from your application that are suited for process mining.
