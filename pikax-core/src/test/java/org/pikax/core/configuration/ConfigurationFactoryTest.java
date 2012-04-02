@@ -1,0 +1,43 @@
+/**
+ * 
+ */
+package org.pikax.core.configuration;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * @author Tiese Barrell
+ *
+ */
+public class ConfigurationFactoryTest {
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void testDefaultConfiguration() {
+		
+		final Configuration configuration = ConfigurationFactory.newInstance();
+		
+		assertEquals(OutputFormat.DEFAULT, configuration.getOutputFormat());
+		assertEquals(10, configuration.getLogEventRetention());
+		//assertEquals(OutputFormat.DEFAULT, configuration.getOutputFormat());
+		
+	}
+
+}
