@@ -20,10 +20,15 @@ import java.util.Calendar;
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.ExecutionListener;
 import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
-import org.pikax.core.CsvFileWriter;
-import org.pikax.core.LogStartEvent;
+import org.pikax.core.PikaxProcessor;
+import org.pikax.core.event.Event;
+import org.pikax.core.event.ProcessLongRunningActivityStartedEvent;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class ServiceTaskStartListener implements ExecutionListener {
+	
+	@Autowired
+	private transient PikaxProcessor pikaxProcessor;
 
 	public void notify(final DelegateExecution execution) throws Exception {
 		String activityName = "Unknown";
@@ -31,8 +36,10 @@ public class ServiceTaskStartListener implements ExecutionListener {
 			final ExecutionEntity executionEntity = (ExecutionEntity) execution;
 			activityName = (String) executionEntity.getActivity().getProperty("name");
 		}
-
-		CsvFileWriter.writeEvent(new LogStartEvent(execution.getProcessInstanceId(), activityName, Calendar
-				.getInstance()));
+		
+		final Event event = new ProcessLongRunningActivityStartedEvent(execution.getProcessInstanceId(), activityName, Calendar
+				.getInstance());
+		
+		pikaxProcessor.processEvent(event);
 	}
 }

@@ -8,7 +8,7 @@
 	<name>Pikax Parent</name>
 
 	<properties>
-		<activiti.version>5.8</activiti.version>
+		<activiti.version>5.9</activiti.version>
 		<aspectj.version>1.6.11</aspectj.version>
 		<camel.version>2.9.1</camel.version>
 		<commons.io.version>2.1</commons.io.version>
@@ -19,6 +19,14 @@
 		<slf4j.version>1.6.4</slf4j.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	
+	<repositories>
+		<repository>
+			<id>activiti</id>
+			<name>Alfresco Activiti Repository</name>
+			<url>http://maven.alfresco.com/nexus/content/repositories/activiti</url>
+		</repository>
+	</repositories>
 
 	<dependencyManagement>
 		<dependencies>

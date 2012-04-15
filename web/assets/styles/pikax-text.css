@@ -1,0 +1,37 @@
+body {
+    font-family:                       helvetica, sans-serif;
+    font-size:                         11px;
+}
+
+header + section {
+    color:                             white;
+    font-size:                         200%;
+    font-weight:                       bold;
+}
+
+@font-face {
+    font-family: "Nobile";
+    src: url("../fonts/nobile/nobile.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Cantarell";
+    src: url("../fonts/cantarell/Cantarell-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Quicksand";
+    src: url("../fonts/quicksand/Quicksand_Light.otf") format("opentype");
+}
+
+a {
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a.highlight {
+    color: #B2D200;
+}

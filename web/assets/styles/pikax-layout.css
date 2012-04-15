@@ -1,0 +1,101 @@
+body {
+    background-color:                  #eaeaea;
+    padding:                           0;
+    margin:                            0;
+    color:                             black;
+}
+
+div#container {
+    margin:                            0;
+    padding:                           0;
+}
+
+header > div.container,
+section > div.container{
+    width:                             800px;
+    margin:                            auto;
+    text-align:                        left;
+    padding:                           0.2ex 1em;
+}
+
+header {
+    background-color:                  white;
+    margin-top:                        15px;
+    height:                            70px;
+}
+
+header > div.container {
+    text-align:                        right;
+}
+
+/* 
+ * Masthead section 
+ */
+header + section {
+    background-color:                  black;
+    height:                            200px;
+    background:                        black url("../images/background-masthead.png") repeat-x;
+}
+
+header + section h1 {
+    margin:                            0.5ex 0;
+    font-family:                       "Cantarell", helvetica, sans-serif;
+    font-weight:                       normal;
+}
+
+header + section p {
+    font-size:                         80%;
+    font-family:                       "Quicksand", helvetica, sans-serif;
+    font-weight:                       normal;
+}
+
+/*
+ * All sections
+ */
+section {
+    margin-top:                        0;
+    margin-bottom:                     0;
+}
+
+img.githubRibbon {
+    position:                          absolute; 
+    top:                               0; 
+    left:                              0; 
+    border:                            0;
+}
+
+ul.topics {
+    width:                             100%;
+    text-align:                        center;
+    margin:                            0;
+    padding:                           0;
+}
+
+ul.topics li {
+    display:                           block;
+    margin:                            0.5ex 1em;
+    float:                             left;
+    width:                             30%;
+    height:                            100px;
+    background:                        #666666 url("../images/background-topics.png") repeat-x;
+    text-align:                        left;
+    border-bottom:                     5px solid #B2D200;
+}
+
+ul.topics li h2,
+ul.topics li p {
+    color:                             white;
+}
+
+ul.topics li h2 {
+    margin:                            0.5ex 0.5em;
+    font-size:                         170%;
+    font-family:                       "Cantarell", helvetica, sans-serif;
+}
+
+ul.topics li p {
+    margin:                            0.5ex 1em;
+    font-family:                       "Quicksand", helvetica, sans-serif;
+    font-size:                         130%;
+    line-height:                       2.5ex;
+}
