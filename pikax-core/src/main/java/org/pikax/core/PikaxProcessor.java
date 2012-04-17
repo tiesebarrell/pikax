@@ -18,11 +18,14 @@ package org.pikax.core;
 import org.pikax.core.configuration.Configuration;
 import org.pikax.core.configuration.ConfigurationFactory;
 import org.pikax.core.event.Event;
+import org.pikax.core.file.csv.stub.SimpleCsvFileWriter;
+import org.springframework.stereotype.Component;
 
 /**
  * @author Tiese Barrell
  *
  */
+@Component
 public class PikaxProcessor {
 	
 	private transient Configuration configuration;
@@ -38,7 +41,8 @@ public class PikaxProcessor {
 	}
 	
 	public void processEvent(final Event event) {
-		
+		//TODO: use configuration instead of stub marshaller
+		SimpleCsvFileWriter.writeEvent(event);
 	}
 
 }

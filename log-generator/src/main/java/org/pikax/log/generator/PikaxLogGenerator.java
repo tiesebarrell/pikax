@@ -35,7 +35,7 @@ public abstract class PikaxLogGenerator implements LogGenerator {
 	 */
 	public void generate(final int amount) {
 
-		executorService = Executors.newFixedThreadPool(250);
+		executorService = Executors.newFixedThreadPool(1);
 
 		for (int i = 0; i < amount; i++) {
 			System.out.println("Creating process handler " + i);

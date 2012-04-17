@@ -29,6 +29,8 @@ public interface Event {
 	
 	String getName();
 	
+	String getCorrelationId();
+	
 	Calendar getOccurred();
 
 }

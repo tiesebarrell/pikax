@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package org.pikax.core;
+package org.pikax.core.file.csv.stub;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,10 +21,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
-import org.pikax.core.file.LogEventMarshaller;
-import org.pikax.core.file.csv.CsvLogEventMarshaller;
+import org.pikax.core.event.Event;
 
-public final class CsvFileWriter {
+public final class SimpleCsvFileWriter {
 
 	private static final String FILE_NAME_PATTERN = "pikax.log.%s.csv";
 	private static final LogEventMarshaller logEventMarshaller = new CsvLogEventMarshaller();
@@ -35,7 +34,7 @@ public final class CsvFileWriter {
 
 	private static File LOGFILE;
 
-	private CsvFileWriter() {
+	private SimpleCsvFileWriter() {
 		super();
 	}
 
@@ -48,21 +47,17 @@ public final class CsvFileWriter {
 		LOGFILE = new File(String.format(FILE_NAME_PATTERN, dateString));
 	}
 
-	public synchronized static final void writeEvent(final AbstractSingleDateLogEvent logEvent) {
-		final LogEvent toBeWritten = LOG_EVENT_CACHE.cache(logEvent);
+	public synchronized static final void writeEvent(final Event event) {
+		final AggregatedEvent toBeWritten = LOG_EVENT_CACHE.cache(event);
 		if (toBeWritten != null) {
 			writeEventToFile(toBeWritten);
 		}
 	}
 
-	public synchronized static final void write(final LogEvent logEvent) {
-		writeEventToFile(logEvent);
-	}
-
-	private static final void writeEventToFile(final LogEvent logEvent) {
+	private static final void writeEventToFile(final AggregatedEvent event) {
 		try {
 			prepareWrite();
-			writeToFile(logEventMarshaller.marshallEvent(logEvent));
+			writeToFile(logEventMarshaller.marshallEvent(event));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package org.pikax.core;
+package org.pikax.core.file.csv.stub;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,12 +25,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.pikax.core.event.Event;
+
 public class FileLogEventCache implements LogEventCache {
 
 	private static final String FILE_NAME_PATTERN = "pikax.correlation.cache";
 	private static final File CACHEFILE = new File(FILE_NAME_PATTERN);
 
-	private Map<String, AbstractSingleDateLogEvent> cache = new HashMap<String, AbstractSingleDateLogEvent>();
+	private Map<String, Event> cache = new HashMap<String, Event>();
 
 	public FileLogEventCache() {
 		super();
@@ -42,7 +44,7 @@ public class FileLogEventCache implements LogEventCache {
 		if (CACHEFILE.exists()) {
 			try {
 				final ObjectInputStream ois = new ObjectInputStream(new FileInputStream(CACHEFILE));
-				cache = (Map<String, AbstractSingleDateLogEvent>) ois.readObject();
+				cache = (Map<String, Event>) ois.readObject();
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
@@ -51,20 +53,20 @@ public class FileLogEventCache implements LogEventCache {
 		}
 	}
 
-	public synchronized LogEvent cache(AbstractSingleDateLogEvent logEvent) {
+	public synchronized AggregatedEvent cache(Event event) {
 
-		LogEvent result = null;
-		if (isCorrelatedEventInCache(logEvent)) {
-			result = createLogEvent(logEvent);
+		AggregatedEvent result = null;
+		if (isCorrelatedEventInCache(event)) {
+			result = createLogEvent(event);
 		} else {
-			addToCache(logEvent);
+			addToCache(event);
 		}
 
 		String message = String.format("Processed event. The cache now contains %s events awaiting correlation.",
 				cache.size());
 		if (cache.size() > 0 && cache.size() < 6) {
 			final StringBuilder builder = new StringBuilder();
-			for (final Entry<String, AbstractSingleDateLogEvent> entry : cache.entrySet()) {
+			for (final Entry<String, Event> entry : cache.entrySet()) {
 				builder.append("\n\t CorrelationID: ").append(entry.getKey());
 			}
 			message = message + builder.toString();
@@ -73,25 +75,24 @@ public class FileLogEventCache implements LogEventCache {
 		return result;
 	}
 
-	private void addToCache(AbstractSingleDateLogEvent logEvent) {
-		cache.put(logEvent.getCorrelationId(), logEvent);
+	private void addToCache(Event event) {
+		cache.put(event.getCorrelationId(), event);
 		persistCache();
 	}
 
-	private LogEvent createLogEvent(AbstractSingleDateLogEvent logEvent) {
-		LogEvent result = null;
-		final AbstractSingleDateLogEvent correlatedEvent = cache.get(logEvent.getCorrelationId());
+	private AggregatedEvent createLogEvent(Event event) {
+		AggregatedEvent result = null;
+		final Event correlatedEvent = cache.get(event.getCorrelationId());
 		if (correlatedEvent != null) {
-			result = new LogEvent(correlatedEvent.getCaseId(), correlatedEvent.getAuditActivity(), correlatedEvent,
-					logEvent);
-			cache.remove(logEvent.getCorrelationId());
+			result = new AggregatedEvent(correlatedEvent.getCaseId(), correlatedEvent.getName(), correlatedEvent.getOccurred(), event.getOccurred());
+			cache.remove(event.getCorrelationId());
 			persistCache();
 		}
 		return result;
 	}
 
-	private boolean isCorrelatedEventInCache(AbstractSingleDateLogEvent logEvent) {
-		return cache.containsKey(logEvent.getCorrelationId());
+	private boolean isCorrelatedEventInCache(Event event) {
+		return cache.containsKey(event.getCorrelationId());
 	}
 
 	private void persistCache() {

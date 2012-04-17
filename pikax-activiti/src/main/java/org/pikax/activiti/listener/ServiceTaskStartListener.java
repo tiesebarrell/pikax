@@ -24,11 +24,13 @@ import org.pikax.core.PikaxProcessor;
 import org.pikax.core.event.Event;
 import org.pikax.core.event.ProcessLongRunningActivityStartedEvent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ServiceTaskStartListener implements ExecutionListener {
 	
 	@Autowired
-	private transient PikaxProcessor pikaxProcessor;
+	private transient PikaxProcessor pikaxProcessor = new PikaxProcessor();
 
 	public void notify(final DelegateExecution execution) throws Exception {
 		String activityName = "Unknown";

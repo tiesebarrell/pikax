@@ -13,24 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package org.pikax.core.file.csv;
+package org.pikax.core.file.csv.stub;
 
-import org.pikax.core.LogEvent;
-import org.pikax.core.file.LogEventMarshaller;
+import org.pikax.core.event.Event;
 
-public class CsvLogEventMarshaller implements LogEventMarshaller {
+public interface LogEventCache {
 
-	private static final String CSV_HEADER_LINE = "ID,CaseID,Activity,Start,End\n";
-
-	private static final String CSV_PATTERN = "%s,%s,%s,%s,%s\n";
-
-	public String marshallEvent(LogEvent logEvent) {
-		return String.format(CSV_PATTERN, logEvent.getId(), logEvent.getCaseId(), logEvent.getAuditActivity(),
-				logEvent.getStart(), logEvent.getEnd());
-	}
-
-	public String marshallBegin() {
-		return CSV_HEADER_LINE;
-	}
+	AggregatedEvent cache(Event event);
 
 }

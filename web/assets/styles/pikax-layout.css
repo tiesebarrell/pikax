@@ -10,13 +10,16 @@ div#container {
     padding:                           0;
 }
 
-header > div.container,
-section > div.container{
+div.sectionContainer {
     width:                             800px;
     margin:                            auto;
     text-align:                        left;
     padding:                           0.2ex 1em;
 }
+
+/*
+ * Header
+ */
 
 header {
     background-color:                  white;
@@ -24,37 +27,44 @@ header {
     height:                            70px;
 }
 
-header > div.container {
-    text-align:                        right;
+header div.sectionContainer {
+     text-align:                        right;
 }
 
 /* 
  * Masthead section 
  */
-header + section {
+section.banner {
     background-color:                  black;
     height:                            200px;
     background:                        black url("../images/background-masthead.png") repeat-x;
 }
 
-header + section h1 {
+
+/*
+ * All sections
+ */
+section h1 {
     margin:                            0.5ex 0;
     font-family:                       "Cantarell", helvetica, sans-serif;
     font-weight:                       normal;
 }
 
-header + section p {
+section p {
     font-size:                         80%;
     font-family:                       "Quicksand", helvetica, sans-serif;
     font-weight:                       normal;
 }
 
-/*
- * All sections
- */
 section {
     margin-top:                        0;
     margin-bottom:                     0;
+}
+
+section.title {
+    background-color:                  black;
+    height:                            70px;
+    background:                        black url("../images/background-title.png") repeat-x;
 }
 
 img.githubRibbon {

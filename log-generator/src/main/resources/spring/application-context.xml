@@ -12,8 +12,9 @@
 	<context:annotation-config />
 	
 	<context:component-scan base-package="org.pikax" />
-	
+		
 	<import resource="application-context-process.xml" />
+
 	<!--
 	<import resource="application-context-camel.xml" />
 	-->

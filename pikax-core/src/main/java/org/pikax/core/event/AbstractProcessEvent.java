@@ -18,6 +18,7 @@
  */
 package org.pikax.core.event;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.UUID;
 
@@ -27,7 +28,14 @@ import java.util.UUID;
  * @author Tiese Barrell
  * 
  */
-public abstract class AbstractProcessEvent implements Event {
+public abstract class AbstractProcessEvent implements Event, Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7986057729783522987L;
+
+	private static final String CORRELATION_ID_PATTERN = "%s.%s";
 
 	private final String id;
 	private final String caseId;
@@ -56,6 +64,10 @@ public abstract class AbstractProcessEvent implements Event {
 
 	public String getName() {
 		return name;
+	}
+	
+	public String getCorrelationId() {
+		return String.format(CORRELATION_ID_PATTERN, caseId, name);
 	}
 
 	public int compareTo(final AbstractProcessEvent o) {

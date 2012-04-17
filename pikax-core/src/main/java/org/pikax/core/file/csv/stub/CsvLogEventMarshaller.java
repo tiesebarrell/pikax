@@ -13,21 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-/**
- * 
- */
-package org.pikax.core;
+package org.pikax.core.file.csv.stub;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-/**
- * @author tiesebarrell
- * 
- */
-public class LogStartEvent extends AbstractSingleDateLogEvent {
 
-	public LogStartEvent(String caseId, String auditActivity, Calendar start) {
-		super(caseId, auditActivity, start);
+public class CsvLogEventMarshaller implements LogEventMarshaller {
+
+	private static final String CSV_HEADER_LINE = "ID,CaseID,Activity,Start,End\n";
+
+	private static final String CSV_PATTERN = "%s,%s,%s,%s,%s\n";
+
+	public String marshallEvent(AggregatedEvent event) {
+		return String.format(CSV_PATTERN, event.getId(), event.getCaseId(), event.getName(),
+				formatDate(event.getOccurredStart()), formatDate(event.getOccurredEnd()));
+	}
+
+	private String formatDate(Calendar occurred) {
+		final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SZ");
+		return sdf.format(occurred.getTime());
+	}
+
+	public String marshallBegin() {
+		return CSV_HEADER_LINE;
 	}
 
 }

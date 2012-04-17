@@ -40,7 +40,7 @@ public class Main {
 
 		final LogGenerator logGenerator = logGeneratorFactory.newInstance(variant);
 
-		logGenerator.generate(50000);
+		logGenerator.generate(1);
 
 	}
 
