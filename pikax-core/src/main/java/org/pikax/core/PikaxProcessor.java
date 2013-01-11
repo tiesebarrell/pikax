@@ -22,7 +22,11 @@ import org.pikax.core.file.csv.stub.SimpleCsvFileWriter;
 import org.springframework.stereotype.Component;
 
 /**
+ * The PikaxProcessor is the main classes for handling {@link Event}s according to a {@link Configuration}. There may be multiple instances of a PikaxProcessor in a single application, although this is uncommon.
+ * 
+ * 
  * @author Tiese Barrell
+ * @see
  *
  */
 @Component
@@ -30,11 +34,19 @@ public class PikaxProcessor {
 	
 	private transient Configuration configuration;
 	
+	/**
+	 * Constructs a new PikaxProcessor that uses a default {@link Configuration}.
+	 */
 	public PikaxProcessor() {
 		super();
 		this.configuration = ConfigurationFactory.newInstance();
 	}
 	
+	/**
+	 * Constructs a new PikaxProcessor that uses the provided {@link Configuration}.
+	 * 
+	 * @param configuration
+	 */
 	public PikaxProcessor(final Configuration configuration) {
 		super();
 		this.configuration = configuration;
