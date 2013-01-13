@@ -1,20 +1,29 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>pikax-activiti</artifactId>
 	<name>Pikax Activiti</name>
+	<version>0.0.1-SNAPSHOT</version>
+
 	<parent>
 		<groupId>org.pikax</groupId>
 		<artifactId>pikax-parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1-SNAPSHOT</version>
+		<relativePath>../pikax-parent/pom.xml</relativePath>
 	</parent>
+	
+	<properties>
+		<pikax.core.version>${project.version}</pikax.core.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.pikax</groupId>
 			<artifactId>pikax-core</artifactId>
-			<version>${project.version}</version>
+			<version>${pikax.core.version}</version>
 		</dependency>
-		
+
 		<!-- Activiti -->
 		<dependency>
 			<groupId>org.activiti</groupId>
